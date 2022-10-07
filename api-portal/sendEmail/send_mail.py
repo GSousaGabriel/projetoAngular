@@ -16,26 +16,24 @@ def sendEmail(username, to_emails, msg_str):
          to_emails[indexEmail]=to_emails[indexEmail].strip()
          indexEmail+=1
          
-      server = smtplib.SMTP(host='smtp.office365.com', port=587)
+      server = smtplib.SMTP(host='smtp.gmail.com', port=587)
       server.ehlo()
       server.starttls()
-      server.login(username, 'LPMBFO3uL1NX!Mygm6*G')
-      # server=smtplib.SMTP(host='[sidi-org-br.mail.protection.outlook.com]',port=25)
+      server.login(username, 'senha')
       # server.ehlo()
       server.sendmail(username, 'pasteu008@gmail.com', msg_str)
-      # server.sendmail(username, 'd.braga@sidi.org.br' ,msg_str)
       server.close()
    except Exception as error:
       print(error)
 
 def setupEmail(data,subject='envio de email',from_email='',to_emails=[], type='', idSupplier=''):
-   username='noreply@sidi.org.br'
+   username='noreply@EMPRESA.org.br'
    msg=MIMEMultipart('alternative')
    msg['From']=from_email
    msg['To']=", ".join(to_emails)
    msg['Subject']=subject
-   msg['Cc'] = 'compras@sidi.org.br'
-   #msg['Reply-to'] = 'compras@sidi.org.br'
+   msg['Cc'] = 'compras@EMPRESA.org.br'
+   #msg['Reply-to'] = 'compras@EMPRESA.org.br'
    
    if type == 'resetPass':
          

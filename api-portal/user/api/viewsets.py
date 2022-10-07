@@ -120,6 +120,6 @@ class UserResetPass(ModelViewSet):
         user.set_password(password)
         user.save(update_fields=['password'])
         
-        setupEmail(password, '[SIDI PORTAL] -  Nova senha', '', [email], 'resetPass', '')
+        setupEmail(password, '[EMPRESA PORTAL] -  Nova senha', '', [email], 'resetPass', '')
         return Response('senha enviada para o email cadastrado!')
         

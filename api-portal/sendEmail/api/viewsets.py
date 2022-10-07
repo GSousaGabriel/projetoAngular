@@ -10,5 +10,5 @@ class OtherEmail(ModelViewSet):
         sendEmail = self.request.query_params.get('sendEmail')
             
         if sendEmail is not None:
-            setupEmail(data='',subject='[SIDI] -  Convite para cadastro no portal',from_email='',to_emails=[request.data['email']], type='invitePortal')               
+            setupEmail(data='',subject='[EMPRESA] -  Convite para cadastro no portal',from_email='',to_emails=[request.data['email']], type='invitePortal')               
         return Response('Convite enviado com sucesso!')

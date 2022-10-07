@@ -34,7 +34,7 @@ class Fornecedores(models.Model):
     def save(self, *args, **kwargs):
         if (len(self.tracker.changed()) > 0 and 'approve' not in self.tracker.changed().keys()) and hasattr(self, 'sendChanges'):
             data= self.prepareData(self.tracker.changed())
-            setupEmail(data=data,subject='[SIDI] -  Mudanças no cadastro do fornecedor ',from_email='',to_emails=['compras@sidi.org.br'], type='supplierChange')
+            setupEmail(data=data,subject='[EMPRESA] -  Mudanças no cadastro do fornecedor ',from_email='',to_emails=['compras@EMPRESA.org.br'], type='supplierChange')
         super().save(*args, **kwargs)
     
     def prepareData(self, data):

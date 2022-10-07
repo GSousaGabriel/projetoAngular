@@ -151,9 +151,9 @@ MEDIA_URL = 'api-portal/media/'
 CORS_ALLOWED_ORIGINS = [
     'http://10.100.20.131:4200',
     'http://localhost:4200',
-    'http://portalcompras.sidi.org.br:4200',
-    'https://fluig.sidi.org.br',
-    'https://fluig-homolog.sidi.org.br'
+    'http://portalcompras.EMPRESA.org.br:4200',
+    'https://fluig.EMPRESA.org.br',
+    'https://fluig-homolog.EMPRESA.org.br'
 ]
 
 # Default primary key field type

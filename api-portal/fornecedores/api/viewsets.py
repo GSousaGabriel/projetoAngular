@@ -67,7 +67,7 @@ class FornecedoresViewSetFornAccess(ModelViewSet):
       sendEmail = self.request.query_params.get('sendEmail')
          
       if sendEmail is not None:
-         setupEmail(data=serializer.data,subject='[SIDI] -  Novo cadastro de fornecedor realizado',from_email='',to_emails=['compras@sidi.org.br'], type='supplier')
+         setupEmail(data=serializer.data,subject='[EMPRESA] -  Novo cadastro de fornecedor realizado',from_email='',to_emails=['compras@EMPRESA.org.br'], type='supplier')
       
       return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 

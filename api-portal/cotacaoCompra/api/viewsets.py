@@ -99,7 +99,7 @@ class CotacaoCompraViewSetView(ModelViewSet):
         id = self.request.query_params.get('idSupplier')
         
         if sendEmail == '1':
-            setupEmail(data=data,subject='[SIDI] -  Solicitação de Cotação fluig Id(' + str(data['fluigNumber'])+')',from_email='',to_emails=['compras@sidi.org.br'], type='quotation', idSupplier='0')
+            setupEmail(data=data,subject='[EMPRESA] -  Solicitação de Cotação fluig Id(' + str(data['fluigNumber'])+')',from_email='',to_emails=['compras@EMPRESA.org.br'], type='quotation', idSupplier='0')
         
         elif sendEmail == '2':
             supplier= ''

@@ -53,7 +53,7 @@ class ItemCotacaoViewSet(ModelViewSet):
         sendEmail = self.request.query_params.get('sendEmail')
          
         if sendEmail is not None:
-            setupEmail(data=dataEmail,subject='[SIDI] -  Corrigir Item da Cotação',from_email='',to_emails=[dataEmail['itens'][0]['supplierId']['email']], type='returnQuotation')
+            setupEmail(data=dataEmail,subject='[EMPRESA] -  Corrigir Item da Cotação',from_email='',to_emails=[dataEmail['itens'][0]['supplierId']['email']], type='returnQuotation')
         
         serializer = self.get_serializer(instance, data=correctData, partial=partial)
         serializer.is_valid(raise_exception=True)
