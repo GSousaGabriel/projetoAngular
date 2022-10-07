@@ -1,0 +1,80 @@
+<po-page-default [p-title]="pageTitle" [p-breadcrumb]="breadcrumb">
+    <po-container>
+        <form [formGroup]="validForm">
+            <div class="po-row">
+                <div class="po-md-2">
+                    <po-input name="cotacaoId" p-label="Código da cotação" formControlName="cotacaoId" p-readonly>
+                    </po-input>
+                </div>
+                <div class="po-md-3">
+                    <po-datepicker name="issueDate" p-label="Data de emissão" formControlName="issueDate">
+                    </po-datepicker>
+                </div>
+            </div>
+            <div class="po-row">
+                <div class="po-md-2">
+                    <po-lookup name="solicitacaoCotacao" p-label="Nr. Solicitação" formControlName="solicitacaoCotacao"
+                        p-field-label="solicitacaoId" p-field-value="solicitacaoId" [p-columns]="columnsOrder"
+                        [p-filter-service]="gOIService" (p-change)="fillQuotationData($event)">
+                    </po-lookup>
+                </div>
+                <div class="po-md-3">
+                    <po-input name="buyer" p-label="Comprador" formControlName="buyer" p-readonly> </po-input>
+                    <po-input name="fluigNumber" p-label="fluigNumber" formControlName="fluigNumber" p-readonly [hidden]="true"> </po-input>
+                    <po-input name="expenseTitle" p-label="expenseTitle" formControlName="expenseTitle" p-readonly [hidden]="true"> </po-input>
+                </div>
+            </div>
+        </form>
+        <po-container>
+            <h3 class="po-md-1 po-mb-1">Produtos</h3>
+            <div class="po-row po-mb-1">
+                <div class="po-md-1">
+                    <po-button p-label="Adicionar" p-icon="po-icon po-icon-plus-circle" (p-click)="addProduct();">
+                    </po-button>
+                </div>
+                <div class="po-md-1 po-ml-2">
+                    <po-button p-label="Remover" p-icon="po-icon po-icon-minus-circle" (p-click)="deleteProduct();">
+                    </po-button>
+                </div>
+            </div>
+            <div class="po-row">
+                <div class="po-md-12">
+                    <po-table [p-selectable]="true" [p-single-select]="true" [p-sort]="true" [p-striped]="true"
+                        [p-columns]="aprovarProcessesColumns" [p-items]="itensQuotation"
+                        [p-hide-columns-manager]="true">
+                        <ng-template p-table-cell-template let-column="column" let-row="row" let-i="rowIndex">
+                            <po-lookup p-label="Cód. Produto" [ngModel]="row.productCode"
+                                class="po-xl-2 po-lg-2 po-md-2 po-sm-2" name="lookupProduct" p-field-label="productCode"
+                                p-field-value="id" [p-columns]="columnsProduct" [p-filter-service]="gPService"
+                                (p-change)="fillData(row.id, $event, 'product', row.product)"
+                                [p-filter-params]="this.validForm.get('solicitacaoCotacao')?.value">
+                            </po-lookup>
+                            <po-input p-label="Produto" p-readonly [(ngModel)]="row.product"
+                                class="po-xl-4 po-lg-4 po-md-4 po-sm-4">
+                            </po-input>
+                            <po-input p-label="Quantidade" [(ngModel)]="row.quantity" (p-change)="fixValue($event, row)"
+                                class="po-xl-2 po-lg-2 po-md-2 po-sm-2"> </po-input>
+                            <po-datepicker p-label="Data de necessidade" p-format="dd/MM/yyyy"
+                                [(ngModel)]="row.necessityDate" class="po-xl-2 po-lg-2 po-md-2 po-sm-2">
+                            </po-datepicker>
+                            <po-input p-label="Un. Medida" p-readonly [(ngModel)]="row.unit"
+                                class="po-xl-2 po-lg-2 po-md-2 po-sm-2"> </po-input>
+                                <po-lookup p-label="Fornecedor" [(ngModel)]="row.supplierId"
+                                    class="po-xl-5 po-lg-5 po-md-5 po-sm-5" name="lookupSupplier" p-field-label="socialName"
+                                    p-field-value="id" [p-columns]="columnsSupplier" [p-filter-service]="gSService"
+                                    (p-change)="fillData(row.id, $event, 'supplier', row.supplierId)">
+                                </po-lookup>
+                            <po-input p-readonly p-label="Observação" [(ngModel)]="row.observation"
+                                class="po-xl-7 po-lg-7 po-md-7 po-sm-7"> </po-input>
+                        </ng-template>
+                    </po-table>
+                </div>
+            </div>
+        </po-container>
+        <br>
+        <div class="po-row">
+            <po-button class="po-sm-2" p-label="Salvar" (p-click)="saveForm();">
+            </po-button>
+        </div>
+    </po-container>
+</po-page-default>

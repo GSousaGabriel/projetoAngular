@@ -1,0 +1,49 @@
+<po-page-default [p-title]="pageTitle" [p-breadcrumb]="breadcrumb">
+    <po-container>
+        <form [formGroup]="validForm">
+            <div class="po-row">
+                <div class="po-md-3">
+                    <po-input name="nome" p-label="Nome" formControlName="nome"> </po-input>
+                </div>
+                <div class="po-md-3">
+                    <po-input name="sobrenome" p-label="Sobrenome" formControlName="sobrenome"> </po-input>
+                </div>
+                <div class="po-md-3">
+                    <po-input name="email" p-label="E-mail" formControlName="email"> </po-input>
+                </div>
+            </div>
+            <div class="po-row">
+
+                <div class="po-md-3">
+                    <po-input name="username" p-label="Usuário" formControlName="username" [p-readonly]="notAdm">
+                    </po-input>
+                </div>
+                <div class="po-md-3">
+                    <po-password name="senha" p-label="Senha" formControlName="senha"> </po-password>
+                </div>
+
+            </div>
+            <div *ngIf="userType == 'adm'" class="po-row">
+                <div class="po-md-1">
+                    <po-checkbox name="ativo" p-label="Ativo" formControlName="ativo"> </po-checkbox>
+                </div>
+                <div class="po-md-1 po-mr-3">
+                    <po-checkbox name="admin" p-label="Administrador" formControlName="admin"
+                        (p-change)="fixType($event)"> </po-checkbox>
+                </div>
+                <div class="po-md-1 po-ml-4">
+                    <po-checkbox name="staff" p-label="Comprador" formControlName="staff"
+                        [p-disabled]="!staffEnabled"> </po-checkbox>
+                </div>
+            </div>
+            <div class="po-row">
+                <div class="po-md-1">
+                    <po-button p-label="Salvar " (p-click)="onClickSalvar()"></po-button>
+                </div>
+            </div>
+        </form>
+
+
+    </po-container>
+
+</po-page-default>

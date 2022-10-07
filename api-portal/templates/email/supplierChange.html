@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title></title>
+        <style>
+        table{
+            border: solid gray;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td, th{
+            border-width: 0px 2px 2px 0px;
+            border-style:  solid;
+            border-color: #dddddd;
+        }
+        </style>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    </head>
+    <header>
+      <img src="https://www.sidi.org.br/wp-content/themes/sidi/assets/img/logo.png" class="logo"/>
+    </header>
+    <body>
+        <h2>O fornecedor {{name}}({{document}}) Alterou os seguintes dados:</h2>
+        <table>
+            <theader>
+                <tr>
+                    <th>
+                        <h2>Campo alterado:</h2>
+                    </th>
+                    <th>
+                        <h2>De:</h2>
+                    </th>
+                    <th>
+                        <h2>Para:</h2>
+                    </th>
+                </tr>
+            </theader>
+            <tbody>
+                {%for dados in data%}
+                    <tr>
+                        <td>
+                            <h3>{{dados.field}}</h3>
+                        </td>
+                        <td>
+                            <h3>{{dados.value}}</h3>
+                        </td>
+                        <td>
+                            <h3>{{dados.newValue}}</h3>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>    
+</html>

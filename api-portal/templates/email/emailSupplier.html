@@ -1,0 +1,324 @@
+<head>
+    <title> Cota&ccedil;&atilde;o SIDI</title>
+    <style>
+    BODY {
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 10pt
+    }
+    DIV {
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 10pt
+    }
+    TABLE {
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 10pt
+    }
+    TD {
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 10pt
+    }
+    FORM {
+    MARGIN: 0px
+    }
+    A:link {
+    COLOR: #2d2dcb
+    }
+    A:visited {
+    COLOR: #2d2dcb
+    }
+    A:active {
+    COLOR: #2d2dcb
+    }
+    A:hover {
+    COLOR: #2d2dcb
+    }
+    INPUT {
+    FONT-FAMILY: Courier; FONT-SIZE: 12px
+    }
+    SELECT {
+    FONT-FAMILY: Verdana,Arial,Helvetica,sans-serif; FONT-SIZE: 12px
+    }
+    .Yellow {
+    BACKGROUND-COLOR: #e8e028
+    } 
+    .NormalYellow {
+    COLOR: #e8e028; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 13px
+    }
+    .TableRowYellow {
+    BACKGROUND-COLOR: #FFFFCC; COLOR: #074b85; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 12px; VERTICAL-ALIGN: top
+    }
+    .NormalRedBold {
+    COLOR: #ff0000; FONT-FAMILY: Verdana,Arial,Helvetica,sans-serif; FONT-SIZE: 13px; FONT-WEIGHT: bold
+    }
+    .NormalCommentField {
+    FONT-FAMILY: Courier; FONT-SIZE: 12px
+    }
+    .NormalBold {
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 10pt; FONT-WEIGHT: bold
+    }
+    .Mini {
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 10px
+    }
+    .MiniError {
+    COLOR: #ff3333; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 10px
+    }
+    .MidleBold {
+    FONT-FAMILY: Verdana,Arial,Helvetica,sans-serif; FONT-SIZE: 14px; FONT-WEIGHT: bold
+    }
+    .Small {
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 10px
+    }
+    .SmallRight {
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 12px; TEXT-ALIGN: right
+    }
+    .SmallBold {
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 10px; FONT-WEIGHT: bold
+    }
+    .SmallBoldHeight {
+    FONT-FAMILY: Verdana,Arial,Helvetica,sans-serif; FONT-SIZE: 12px; FONT-WEIGHT: bold; LINE-HEIGHT: 17px
+    }
+    .TitleSmall {
+    COLOR: #074b85; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 18px; FONT-WEIGHT: normal; LINE-HEIGHT: 20px; TEXT-ALIGN: left
+    }
+    .TitleSmallRight {
+    COLOR: #074b85; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 18px; FONT-WEIGHT: normal; LINE-HEIGHT: 20px; TEXT-ALIGN: right
+    }
+    .TitleSmallCenter {
+    COLOR: #074b85; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 18px; FONT-WEIGHT: normal; LINE-HEIGHT: 20px; TEXT-ALIGN: center
+    }
+    .TitleSmallSalmon {
+    COLOR: #ffbfbf; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 18px; FONT-WEIGHT: normal; LINE-HEIGHT: 20px
+    }
+    .TitleMedium {
+    COLOR: #979797; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 22px; FONT-WEIGHT: normal; LINE-HEIGHT: 24px; TEXT-ALIGN: left
+    }
+    .TitleMediumBold {
+    COLOR: #979797; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 22px; FONT-WEIGHT: bold; LINE-HEIGHT: 24px; TEXT-ALIGN: left
+    }
+    .TitleMediumRight {
+    COLOR: #979797; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 22px; FONT-WEIGHT: normal; LINE-HEIGHT: 24px; TEXT-ALIGN: right
+    }
+    .TitleMediumCenter {
+    COLOR: #979797; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 22px; FONT-WEIGHT: normal; LINE-HEIGHT: 24px; TEXT-ALIGN: center
+    }
+    .TitleBig {
+    COLOR: #074b85; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 24px; FONT-WEIGHT: normal; LINE-HEIGHT: 26px; TEXT-ALIGN: left
+    }
+    .TitleBigRight {
+    COLOR: #074b85; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 24px; FONT-WEIGHT: normal; LINE-HEIGHT: 26px; TEXT-ALIGN: right
+    }
+    .TitleBigCenter {
+    BACKGROUND-COLOR: #f7f7f7;COLOR: #074b85; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 24px; FONT-WEIGHT: normal; LINE-HEIGHT: 26px; TEXT-ALIGN: center
+    }
+    .TitlePopupWhite {
+    COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 16px; FONT-WEIGHT: normal; LINE-HEIGHT: 18px; TEXT-ALIGN: right
+    }
+    .TableColumnTitle {
+    BACKGROUND-COLOR: #FFFF99; COLOR: #074b85; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 14px; FONT-WEIGHT: bold; VERTICAL-ALIGN: top
+    }
+    .TableColumnTitleCenter {
+    BACKGROUND-COLOR: #ffddcb; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 12px; FONT-WEIGHT: bold; TEXT-ALIGN: center; VERTICAL-ALIGN: top
+    }
+    .TableRowGrey {
+    BACKGROUND-COLOR: #f7f7f7; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 12px; VERTICAL-ALIGN: top
+    }
+    .TableRowGreyCenter {
+    BACKGROUND-COLOR: #f7f7f7; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 12px; TEXT-ALIGN: center; VERTICAL-ALIGN: top
+    }
+    .TableRowGreyForm {
+    BACKGROUND-COLOR: #f7f7f7; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 12px; HEIGHT: 22px
+    }
+    .TableRowErrorForm {
+    BACKGROUND-COLOR: #ff3333; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 12px; HEIGHT: 22px
+    }
+    .TableRowGreyTitleMedium {
+    BACKGROUND-COLOR: #f7f7f7; COLOR: #979797; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 19px; VERTICAL-ALIGN: top
+    }
+    .TableRowGreyDark {
+    BACKGROUND-COLOR: #ececec; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 12px; VERTICAL-ALIGN: top
+    }
+    .TableRowGreyDarkMini {
+    BACKGROUND-COLOR: #ececec; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 10px; VERTICAL-ALIGN: top
+    }
+    .TableRowGreyMini {
+    BACKGROUND-COLOR: #f7f7f7; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 10px; VERTICAL-ALIGN: top
+    }
+    .TableRowGreyMin1 {
+    BACKGROUND-COLOR: lightgrey; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; FONT-SIZE: 11px; VERTICAL-ALIGN: top ; FONT-WEIGHT: bold
+    }
+    .TableRowSalmon {
+    BACKGROUND-COLOR: #fff2eb; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 12px; VERTICAL-ALIGN: top
+    }
+    .TableRowSalmonCenter {
+    BACKGROUND-COLOR: #fff2eb; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 12px; TEXT-ALIGN: center; VERTICAL-ALIGN: top
+    }
+    .TableRowSalmonForm {
+    BACKGROUND-COLOR: #fff2eb; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 12px; HEIGHT: 22px
+    }
+    .TableRowSalmonFormMini {
+    BACKGROUND-COLOR: #fff2eb; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 10px
+    }
+    .TableRowWhite {
+    COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 12px; VERTICAL-ALIGN: top
+    }
+    .TableRowWhiteCenter {
+    COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 12px; TEXT-ALIGN: center; VERTICAL-ALIGN: top
+    }
+    .TableRowWhiteForm {
+    COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 12px; HEIGHT: 22px
+    }
+    .TableRowWhiteMini {
+    COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 10px; VERTICAL-ALIGN: top
+    }
+    .TableRowWhiteMini2 {
+    COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 10px; VERTICAL-ALIGN: top
+    }
+    .TableRowBlueTitleMedium {
+    BACKGROUND-COLOR: #E4E4E4; COLOR: #FFCC00; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 28px; VERTICAL-ALIGN: top ; FONT-WEIGHT: bold
+    }
+    .TableRowBlueDark {
+    BACKGROUND-COLOR: #E4E4E4; COLOR: #FFCC00; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 14px; VERTICAL-ALIGN: top
+    }
+    .TableRowBlueDarkMini {
+    BACKGROUND-COLOR: #E4E4E4; COLOR: #FFCC00; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 10px; VERTICAL-ALIGN: top
+    }
+    .TableRowBlueDarkMini2 {
+    BACKGROUND-COLOR: #E4E4E4; COLOR: #FFCC00; FONT-FAMILY: Arial, Verdana, Helvetica, sans-serif; FONT-SIZE: 10px; VERTICAL-ALIGN: top
+    }
+    .TableRowBlueMini {
+    BACKGROUND-COLOR: #074b85; COLOR: #FFCC00; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 10px; VERTICAL-ALIGN: top
+    }
+    .TableRowBlue {
+    BACKGROUND-COLOR: #074b85; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 12px; VERTICAL-ALIGN: top
+    }
+    .style1 {
+    color: #19167D
+    }
+    .style2 {
+    BACKGROUND-COLOR: #E4E4E4; COLOR: #19167D; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 14px; VERTICAL-ALIGN: top; 
+    }
+    .style3 {
+    BACKGROUND-COLOR: #E4E4E4; COLOR: #19167D; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 10px; VERTICAL-ALIGN: top; 
+    }
+    .style5 {
+    color: #19167D; font-weight: bold; 
+    }
+    .TarjaTopoCor {
+    text-decoration: none; height: 6px; background-image: url('http://localhost/pontilhado.gif'); background-color: #6699CC
+    }
+    .texto-layer {
+    font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9px; color: #000000; text-decoration: none
+    }
+    .titulo {
+    font-family: Arial, Helvetica, sans-serif; font-size: 16px; color: #19167D; text-decoration: none; font-weight: bold;
+    }
+    .TituloMenor {
+    font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #19167D; text-decoration: none; font-weight: bold;
+    }
+    .texto {
+    font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #333333; text-decoration: none; font-weight: normal;
+    }
+    .link{
+      vertical-align: middle;
+      text-align: center;
+      display: inline;
+    }
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    </head>
+    <body leftmargin="8" topmargin="8">
+    <strong>
+    </strong>
+    <table border="0" cellpadding="0" cellspacing="0" height="58" width="100%">
+      <tbody>
+        <tr>
+          <td background="http://localhost/topo_04.gif" height="72" width="12%"> 
+          <img src="https://www.sidi.org.br/wp-content/themes/sidi/assets/img/logo.png" border="0"> </td>
+          <td background="http://localhost/topo_04.gif" height="72" width="76%">
+          <p style="line-height: 100%; text-align: center;"><strong>
+          <font color="#000000" face="Verdana, Arial, Helvetica, sans-serif" size="2">
+          SIDI - CNPJ : 06.176.586/0002-07 - IE : ISENTO<br>
+          RUA AGUACU, 171 - ALPHAVILLE - CAMPINAS / SP<br>
+          Fone : (19) 3344-4500 - E-mail : compras@sidi.org.br</font></strong></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table border="0" cellpadding="0" cellspacing="0" hspace="0" vspace="0" width="99%">
+      <tbody>
+      </tbody>
+    </table>
+    <br>
+    <table align="center" border="0" cellpadding="0" cellspacing="3" width="96%">
+      <tbody>
+        <tr>
+          <td align="center" width="100%"><span class="titulo"></span>
+            <font face="Arial" size="5">Novo fornecedor cadastrado: {{supplierId}}</font></td>
+        </tr>
+      </tbody>
+    </table>
+    <table align="center" bgcolor="#f7f7f7" border="1" bordercolor="#e5e5e5"
+     cellpadding="6" cellspacing="0" width="96%">
+     
+        <tr>
+          <td bordercolor="#FFFFFF" class="titulo" width="100%">
+          <div align="left">
+          <table border="0" bordercolor="#dfefff" width="100%">
+          </table>
+          </div>
+          <form method="post" onsubmit="return Verifica();" action="mailto:%WFMailTo%" name="cotacao"> 
+                <input name="T11"   size="12" maxlength="12" value="%t.14%"  type="hidden"> 
+                <input name="nItem" size="12" maxlength="12" value="%nItem%" type="hidden">
+            <table border="0" cellpadding="2" cellspacing="1" height="81" width="100%">
+              <tbody>
+                <tr>
+                  <td class="SmallBold" height="19" width="16%"> <strong>
+                  <font size="2">{{documentType}}</font></strong></td>
+                  <td class="Small" colspan="3" height="19" width="83%"> 
+                  <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                  <strong style="font-weight: 400;">
+                  {{document}}</strong></font></td>
+                </tr>
+                <tr>
+                  <td class="SmallBold" height="20" width="16%"> 
+                  <span style="font-weight: 400;"> 
+                  <font face="Verdana, Arial, Helvetica, sans-serif" size="2"><strong>Nome fantasia</strong></font></span></td>
+                  <td class="Small" height="19" width="33%"> 
+                  <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                  <strong style="font-weight: 400;">{{fantasyName}}</strong></font></td>
+                </tr>
+                <tr>
+                  <td class="SmallBold" height="24" width="16%">
+                  <span style="font-weight: 400;">
+                  <font face="Verdana, Arial, Helvetica, sans-serif" size="2"><strong>Nome Social</strong></font></span></td>
+                  <td class="Small" height="24" width="33%">
+                  <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                  <strong style="font-weight: 400;">{{socialName}}</strong></font>
+                  </td>
+                  <td class="SmallBold" height="24" width="15%">&nbsp;</td>
+                  <td class="Small" height="24" width="35%">&nbsp; </td>
+                </tr>
+              </tbody>
+            </table>
+    <table align="center" border="0" width="97%">
+      <tbody>
+        <tr>
+          <td class="Mini"></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><strong><font align="left" color="#000000" face="Verdana, Arial, Helvetica, sans-serif" size="2">
+    <font align="left" color="#ff0000" face="Verdana" size="2">
+    </font>
+    </font>
+    </strong>
+    </p>
+    <table align="center" bgcolor="#f7f7f7" border="1" bordercolor="#e5e5e5" cellpadding="0" cellspacing="0" width="100%">
+      <tbody>
+        <tr>
+          <td bordercolor="#FFFFFF" width="80%" style="text-align: center;">
+              <a href="http://portalcompras.sidi.org.br:4200/fornecedores" class="link">Clique aqui para validar o cadastro</a>
+            </td>
+          <td bordercolor="#FFFFFF" width="80%">
+              <div class="texto-layer" align="right">WorkFlow @ SIDI</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </body>

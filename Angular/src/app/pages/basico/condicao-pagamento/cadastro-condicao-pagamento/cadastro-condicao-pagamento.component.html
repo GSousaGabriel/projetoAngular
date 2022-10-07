@@ -1,0 +1,27 @@
+<po-page-default [p-title]="pageTitle" [p-breadcrumb]="breadcrumb">
+    <po-container>
+        <form [formGroup]="validForm">
+            <div class="po-row">
+                <div class="po-row">
+                    <div class="po-md-3">
+                        <po-input name="id" p-label="Código da condição de pagamento" formControlName="id" p-readonly>
+                        </po-input>
+                    </div>
+                    <div class="po-md-2">
+                        <po-input name="codErp" p-label="Código ERP" formControlName="codErp"> </po-input>
+                    </div>
+                </div>
+                <div class="po-row">
+                    <div class="po-md-5">
+                        <po-input name="description" p-label="Descrição da condição de pagamento"
+                            formControlName="description"> </po-input>
+                    </div>
+                </div>
+                <div class="po-row">
+                    <po-button class="po-md-3" p-label="Salvar" (p-click)="saveForm();">
+                    </po-button>
+                </div>
+            </div>
+        </form>
+    </po-container>
+</po-page-default>

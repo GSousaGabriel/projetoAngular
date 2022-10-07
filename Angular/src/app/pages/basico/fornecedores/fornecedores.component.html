@@ -1,0 +1,41 @@
+<po-page-default p-title="Listagem de Fornecedor" [p-actions]="actions" [p-literals]="literalsDefault"
+    [p-breadcrumb]="breadcrumb">
+    <div class="po-row">
+        <div class="po-md-4">
+            <po-input name="searchParam" [(ngModel)]="searchParam" (keyup.enter)="onPesquisar(searchParam, true)">
+            </po-input>
+        </div>
+        <div class="po-md-1 po-mt-1">
+            <po-button p-label="Pesquisar" (p-click)="onPesquisar(searchParam, true)"> </po-button>
+        </div>
+        <div class="po-mt-1 po-md-2 po-ml-2">
+            <po-dropdown [p-actions]="supplierActions" p-label="Filtros">
+            </po-dropdown>
+        </div>
+    </div>
+    <div class="po-row">
+        <div class="po-md-12">
+            <po-table [p-selectable]="true" [p-single-select]="true" [p-sort]="true" [p-striped]="true"
+                [p-columns]="supllierColumns" [p-items]="suppliers.results">
+            </po-table>
+        </div>
+    </div>
+    <div [class]="sendEmailClicked ? 'po-row' : 'po-row po-hidden-sm po-hidden-md po-hidden-lg po-hidden-xl'">
+        <form #sendEmailForm="ngForm">
+            <po-widget p-title="Enviar email de convite para cadastro para:"
+                [style]="sendEmailClicked ? styleModal : ''">
+                <div class="po-row">
+                    <po-email class="po-sm-12" p-required [(ngModel)]="sendEmailTo" name="sendEmailTo"></po-email>
+                    <div class="po-row">
+                        <po-button (p-click)="sendEmail()" p-icon="po-icon po-icon-ok" p-label="Confirmar"
+                            [p-disabled]="sendEmailForm.form.invalid">
+                        </po-button>
+                    </div>
+                </div>
+            </po-widget>
+        </form>
+    </div>
+    <div class="po-row">
+        <po-button-group class="po-md-1" [p-buttons]="paginacao"> </po-button-group>
+    </div>
+</po-page-default>

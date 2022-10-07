@@ -1,0 +1,19 @@
+<po-page-default p-title="Listagem de solictações de compra" [p-actions]="actions" [p-breadcrumb]="breadcrumb">
+    <po-container >
+        <div class="po-row">
+            <div class="po-md-4">
+              <po-input name="input" name="searchParam" [(ngModel)]="searchParam" (keyup.enter)="onPesquisar(searchParam, true)"> </po-input>
+            </div>
+            <div class="po-md-1 po-mt-1">
+              <po-button p-label="Pesquisar" (p-click)="onPesquisar(searchParam, true)"> </po-button>
+            </div>
+          </div>
+        <div class="po-row">
+            <po-table [p-selectable]="true" [p-single-select]="true" [p-sort]="true" [p-striped]="true" [p-columns]="aprovarProcessesColumns" [p-items]="purchaseOrders.results">
+            </po-table>
+        </div>
+        <div class="po-row po-mt-2">
+            <po-button-group class="po-md-1" [p-buttons]="pagination"> </po-button-group>
+        </div>
+    </po-container>
+</po-page-default>

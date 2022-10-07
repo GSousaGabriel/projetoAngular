@@ -1,0 +1,43 @@
+<po-page-default [p-title]="pageTitle" [p-breadcrumb]="breadcrumb">
+    <po-container >
+        <form [formGroup]="validForm">
+            <div class="po-row">
+                <div class="po-row">
+                    <div class="po-md-2">
+                        <po-input name="id" p-label="Código do produto"  formControlName="id" p-readonly> </po-input>
+                    </div>
+                    <div class="po-md-2">
+                        <po-input name="codErp" p-label="Código ERP"  formControlName="codErp"> </po-input>
+                    </div>
+                    <div class="po-md-2">
+                        <po-lookup
+                                p-label="Fornecedor Padrão"
+                                name="defaultSupplier"
+                                formControlName="defaultSupplier"
+                                p-field-label="socialName"
+                                p-field-value="id"
+                                [p-columns]="columnsSupplier"
+                                [p-filter-service]="supplierLookup"
+                                >
+                            </po-lookup>
+                    </div>
+                </div>
+                <div class="po-row">
+                    <div class="po-md-5">
+                        <po-input name="name" p-label="Nome do produto" formControlName="name"> </po-input>
+                    </div>
+                    <div class="po-md-5">
+                        <po-input name="description" p-label="Descrição do produto" formControlName="description"> </po-input>
+                    </div>
+                    <div class="po-md-5">
+                        <po-input name="unit" p-label="Unidade de Medida" formControlName="unit"> </po-input>
+                    </div>
+                </div>
+                <div class="po-row">
+                    <po-button class="po-md-1" p-label="Salvar" (p-click)="saveForm();">
+                    </po-button>
+                </div>
+            </div>
+        </form>
+    </po-container>
+</po-page-default>

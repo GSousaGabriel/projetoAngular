@@ -1,0 +1,58 @@
+<po-page-default p-title="Aprovar itens da cotação" [p-breadcrumb]="breadcrumb"> 
+    <po-container>
+        <div class="po-row">
+            <div class="po-md-4">
+                <po-input name="input" name="searchParam" [(ngModel)]="searchParam"
+                    (keyup.enter)="onPesquisar(searchParam, true)"> </po-input>
+            </div>
+            <div class="po-md-1 po-mt-1">
+                <po-button p-label="Pesquisar" (p-click)="onPesquisar(searchParam, true)"> </po-button>
+            </div>
+        </div>
+        <div class="po-row">
+            <div class="po-md-12">
+                <po-table [p-auto-collapse]="true" [p-columns]="quotationColumns" [p-hide-columns-manager]="true"
+                    [p-items]="quotations" [p-sort]="true" [p-striped]="true" (p-collapsed)="resetSelected(this.itens)">
+                    <ng-template p-table-row-template let-rowItem let-i="rowIndex">
+                        <po-widget p-title="Cotações da Solicitação {{ rowItem.solicitacaoId }}">
+                            <div class="po-row">
+                                <po-table *ngIf="rowItem.cotacao" [p-auto-collapse]="true" [p-columns]="itemColumns"
+                                    [p-hide-columns-manager]="true" [p-items]="fillItens(rowItem.cotacao)"
+                                    [p-sort]="true" [p-striped]="true" [p-selectable]="true" [p-single-select]="false">
+                                </po-table>
+                            </div>
+                            <div
+                                [class]="approveReason ? 'po-row' : 'po-row po-hidden-sm po-hidden-md po-hidden-lg po-hidden-xl'">
+                                <po-widget p-title="Motivo da aprovação" [style]="approveReason ? styleReason : ''">
+                                    <div class="po-row">
+                                        <po-input class="po-sm-12" [(ngModel)]="descApproveReason"></po-input>
+                                        <div class="po-row">
+                                            <po-button (p-click)="updateItem(rowItem, 'approve')" p-icon="po-icon po-icon-ok"
+                                                p-label="Confirmar">
+                                            </po-button>
+                                        </div>
+                                    </div>
+                                </po-widget>
+                            </div>
+                            <div
+                                [class]="!approveReason ? 'po-row po-mt-2' : 'po-row po-mt-2 po-hidden-sm po-hidden-md po-hidden-lg po-hidden-xl'">
+                                <po-button (p-click)="approveItem(rowItem, true, 'approve')" p-icon="po-icon po-icon-ok"
+                                    p-label="Aprovado">
+                                </po-button>
+                                <po-button (p-click)="approveItem(rowItem, false, 'approve')" class="po-ml-1"
+                                    p-icon="po-icon po-icon-close" p-label="Reprovado">
+                                </po-button>
+                                <po-button (p-click)="approveItem(rowItem, false, 'quotation')" class="po-ml-1"
+                                    p-icon="po-icon po-icon-close" p-label="Cotar novamente">
+                                </po-button>
+                            </div>
+                        </po-widget>
+                    </ng-template>
+                </po-table>
+            </div>
+        </div>
+        <div class="po-row po-mt-2">
+            <po-button-group class="po-md-1" [p-buttons]="pagination"> </po-button-group>
+        </div>
+    </po-container>
+</po-page-default>

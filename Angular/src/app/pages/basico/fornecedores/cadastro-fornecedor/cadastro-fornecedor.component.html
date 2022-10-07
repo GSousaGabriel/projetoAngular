@@ -1,0 +1,248 @@
+<po-page-default [p-title]="pageTitle" [p-actions]="actions" [p-breadcrumb]="breadcrumb">
+    <po-container >
+        <form [formGroup]="validForm" enctype="multipart/form-data">
+            <div class="po-row">
+                <div class="po-md-1" *ngIf="typeCad =='99'">
+                    <po-input  name="id" p-label="Código" p-disabled="true" formControlName="codigo" > </po-input>
+                </div>
+                <div *ngIf="typeCad !='3'" class="po-md-3">
+                    <po-input #documentFilter name="documento" p-label="CNPJ/CPF" (p-blur)="changeEvent()"  formControlName="documento" [p-readonly]="this.newRegister ? 'false':'true'"> </po-input>
+                </div>
+                <div *ngIf="typeCad =='3'" class="po-md-3">
+                    <po-combo [p-filter-service]="supplierService" name="document" p-label="CNPJ/CPF" (p-change)="fillSupplier($event)" formControlName="document"></po-combo>
+                </div>
+            </div>
+            <div class="po-row">
+                <div class="po-md-6">
+                    <po-input name="razaoSocial" p-label="Razão Social"  formControlName="razaoSocial" [p-maxlength]="50"> </po-input>
+                </div>
+                <div class="po-md-6">
+                    <po-input name="nomeFantasia" p-label="Nome Fantasia" formControlName="nomeFantasia" [p-maxlength]="30" > </po-input>
+                </div>
+            </div>
+            <div class="po-row">
+                <div class="po-md-2">
+                    <po-input name="cep" p-label="CEP" p-mask="99999-999" formControlName="cep" [p-maxlength]="9" > </po-input>
+                </div>
+                <div class="po-md-4">
+                    <po-input name="endereco" p-label="Endereço" formControlName="endereco" [p-maxlength]="50" > </po-input>
+                </div>
+                <div class="po-md-2">
+                    <po-input name="bairro" p-label="Bairro" formControlName="bairro" [p-maxlength]="30"> </po-input>
+                </div>
+                <div class="po-md-2">
+                    <po-input name="cidade" p-label="Cidade"  formControlName="cidade" [p-maxlength]="30"> </po-input>
+                </div>
+                <div class="po-md-2">
+                    <po-input name="estado" p-label="Estado" formControlName="estado" [p-maxlength]="2" > </po-input>
+                </div>
+            </div>
+            <div class="po-row">
+                <div class="po-md-1">
+                    <po-input name="DDD" p-label="DDD" formControlName="DDD" [p-maxlength]="3"> </po-input>
+                </div>
+                <div class="po-md-2">
+                    <po-input name="telefone" p-label="Telefone" formControlName="telefone" [p-maxlength]="12"> </po-input>
+                </div>
+                <div class="po-md-2">
+                    <po-input name="mobilePhone" p-label="Celular" formControlName="mobilePhone" [p-maxlength]="12" > </po-input>
+                </div>
+                <div class="po-md-4">
+                    <po-input name="contato" p-label="Contato" formControlName="contato" [p-maxlength]="20" > </po-input>
+                </div>
+                <div class="po-md-3">
+                    <po-email name="email" p-label="E-mail" formControlName="email" [p-maxlength]="50" > </po-email>
+                </div>
+                <div *ngIf="typeCad =='99'" class="po-md-2">
+                    <po-input name="coderp" p-label="Cód. Erp" formControlName="coderp" [p-readonly]="disableCod" > </po-input>
+                </div>
+                <div *ngIf="typeCad =='99'" class="po-md-2">
+                    <po-lookup  name="usuario"
+                                p-label="Usuário"
+                                formControlName="usuario"
+                                p-field-label="username"
+                                p-field-value="id"
+                                [p-columns]="columnsUser"
+                                [p-filter-service]="userService"
+                                >
+                    </po-lookup>
+                </div> 
+            </div>
+            <div clas="po-row">
+                <h3 class="po-pb-1">Tipos de arquivos permitidos para anexos: pdf, doc, docx, jpg, jpeg, png, xlsx ou xls</h3>
+            </div>
+            <div class="po-row">
+                <div class="po-md-3" >
+                    <po-widget  >
+                        <div class ="po-row">
+                            <h4 style="color:red ;">Cartão CNPJ *</h4>
+                        </div>
+                        <div class ="po-row">
+                            <br>
+                        </div>
+                        <div class ="po-row">
+                            <div class="po-md-12">
+                                <input #imageInput1 class="po-button-label"
+                                name="cartaoCNPJ"
+                                formControlName="cartaoCNPJ"
+                                type="file"
+                                accept="image/*,.pdf,.doc,.docx,.xlsx,.xls"
+                                (change)="processFile(imageInput1)">
+                            </div>    
+                        </div>
+                        <div *ngIf="(!newRegister && supplier.cartaoCNPJ!= null) || (newRegister && supplier!= undefined)" class ="po-row">
+                            <div class="po-md-12">
+                                <po-button #btnCartaoCNPJ p-icon="po-icon-eye" name="btnCartaoCNPJ" (p-click)="onclickVisualizaAnexo('btnCartaoCNPJ')"></po-button>
+                            </div>
+                        </div>
+                    </po-widget>                    
+                </div>
+                <div class="po-md-3">
+                    <po-widget p-title="Cadastro Sintegra">
+                        <div class ="po-row">    
+                            <div class="po-md-12">                   
+                                <input #imageInput2 class="po-button-label"
+                                name="cadastroSintegra"
+                                formControlName="cadastroSintegra"
+                                type="file"
+                                accept="image/*,.pdf,.doc,.docx,.xlsx,.xls"
+                                (change)="processFile(imageInput2)">
+                            </div>
+                        </div>
+                        <div *ngIf=" (!newRegister && supplier.cadastroSintegra!= null) || (newRegister && supplier!= undefined)" class= "po-row">    
+                            <div class="po-md-12">
+                                <po-button #btnCadastroSintegra p-icon="po-icon-eye" name="btnCadastroSintegra" (p-click)="onclickVisualizaAnexo('btnCadastroSintegra')"></po-button>
+                            </div>
+                        </div>
+                    </po-widget>                    
+                </div>
+                <div class="po-md-3">
+                    <po-widget p-title="Cert. Negativa Receita Federal" >
+                        <div class ="po-row">    
+                            <div class="po-md-12">
+                                <input #imageInput3 class="po-button-label"
+                                name="certidaoNegativaRF"
+                                formControlName="certidaoNegativaRF"
+                                type="file"
+                                accept="image/*,.pdf,.doc,.docx,.xlsx,.xls"
+                                (change)="processFile(imageInput3)">
+                            </div>
+                        </div>    
+                        <div *ngIf=" (!newRegister && supplier.certidaoNegativaRF!= null) || (newRegister && supplier!= undefined)" class ="po-row">    
+                            <div class="po-md-12">
+                                <po-button #btnCertidaoNegativaRF p-icon="po-icon-eye" name="btnCertidaoNegativaRF" (p-click)="onclickVisualizaAnexo('btnCertidaoNegativaRF')"></po-button>
+                            </div>
+                        </div>
+                    </po-widget>                    
+                </div>
+                <div class="po-md-3">
+                    <po-widget p-title="Contrato Social">
+                        <div class ="po-row">
+                            <div class="po-md-12">
+                                <input #imageInput4 class="po-button-label"
+                                name="contratoSocial"
+                                formControlName="contratoSocial"
+                                type="file"
+                                accept="image/*,.pdf,.doc,.docx,.xlsx,.xls"
+                                (change)="processFile(imageInput4)">
+                            </div>
+                        </div>
+                        <div *ngIf=" (!newRegister && supplier.contratoSocial!= null) || (newRegister && supplier!= undefined)" class ="po-row">    
+                            <div class="po-md-12">
+                                <po-button #btnContratoSocial p-icon="po-icon-eye" name="btnContratoSocial" (p-click)="onclickVisualizaAnexo('btnContratoSocial')"></po-button>
+                            </div>
+                        </div>
+                    </po-widget>                    
+                </div>
+            </div>
+            <div class="po-row">
+                <div class="po-md-3">
+                    <po-widget p-title="Cert. Negativa FGTS">
+                        <div class ="po-row">  
+                            <div class="po-md-12">
+                                <input #imageInput5 class="po-button-label"
+                                name="certidaoNegativaFGTS"
+                                formControlName="certidaoNegativaFGTS"
+                                type="file"
+                                accept="image/*,.pdf,.doc,.docx,.xlsx,.xls"
+                                (change)="processFile(imageInput5)">
+                            </div>
+                        </div>
+                        <div *ngIf=" (!newRegister && supplier.certidaoNegativaFGTS!= null) || (newRegister && supplier!= undefined)" class ="po-row">    
+                            <div class="po-md-12">
+                                <po-button #btnCertidaoNegativaFGTS p-icon="po-icon-eye" name="btnCertidaoNegativaFGTS" (p-click)="onclickVisualizaAnexo('btnCertidaoNegativaFGTS')"></po-button>
+                            </div>
+                        </div>
+                    </po-widget>                    
+                </div>
+                <div class="po-md-3">
+                    <po-widget p-title="Cert. Negativa Trabalhista">
+                        <div class ="po-row">    
+                            <div class="po-md-12">
+                                <input #imageInput6 class="po-button-label"
+                                name="certidaoNegativaTrabalhista"
+                                formControlName="certidaoNegativaTrabalhista"
+                                type="file"
+                                accept="image/*,.pdf,.doc,.docx,.xlsx,.xls"
+                                (change)="processFile(imageInput6)">
+                            </div>
+                        </div>
+                        <div *ngIf=" (!newRegister && supplier.certidaoNegativaTrabalhista!= null) || (newRegister && supplier!= undefined)" class ="po-row">    
+                            <div class="po-md-12">
+                                <po-button #btnCertidaoNegativaTrabalhista p-icon="po-icon-eye" name="btnCertidaoNegativaTrabalhista" (p-click)="onclickVisualizaAnexo('btnCertidaoNegativaTrabalhista')"></po-button>
+                            </div>
+                        </div>
+                    </po-widget>                    
+                </div>
+                <div class="po-md-3">
+                    <po-widget p-title="Outros">
+                        <div class ="po-row">    
+                            <div class="po-md-12">
+                                <input #imageInput7 class="po-button-label"
+                                name="outrosAnexos"
+                                formControlName="outrosAnexos"
+                                type="file"
+                                accept="image/*,.pdf,.doc,.docx,.xlsx,.xls"
+                                (change)="processFile(imageInput7)">
+                            </div>
+                        </div>
+                    <div *ngIf=" (!newRegister && supplier.outrosAnexos!= null) || (newRegister && supplier!= undefined)" class ="po-row">    
+                        <div class="po-md-12" >
+                            <po-button  #btnOutrosAnexos p-icon="po-icon-eye" name="btnOutrosAnexos" (p-click)="onclickVisualizaAnexo('btnOutrosAnexos')"></po-button>
+                        </div>
+                    </div>
+                    </po-widget>                    
+                </div>
+                <div class="po-md-3" >
+                    <po-widget >
+                        <div class ="po-row">
+                            <h4 style="color:red ;">Dados bancários *</h4>
+                        </div>
+                        <div class ="po-row">
+                            <br>
+                        </div>
+                        <div class ="po-row">    
+                            <div class="po-md-12">
+                                <input #imageInput8 class="po-button-label"
+                                name="dadosBanco"
+                                formControlName="dadosBanco"
+                                type="file"
+                                accept="image/*,.pdf,.doc,.docx,.xlsx,.xls"
+                                (change)="processFile(imageInput8)">
+                            </div>
+                        </div>    
+                        <div *ngIf=" (!newRegister && supplier.dadosBanco!= null) || (newRegister && supplier!= undefined)" class ="po-row">    
+                            <div class="po-md-12">
+                                <po-button #btnCertidaoNegativaRF p-icon="po-icon-eye" name="btnDadosBanco" (p-click)="onclickVisualizaAnexo('btnDadosBanco')"></po-button>
+                            </div>
+                        </div>
+                    </po-widget>                    
+                </div>
+            </div>
+            
+            
+           
+        </form>
+        
+    </po-container>
+</po-page-default>

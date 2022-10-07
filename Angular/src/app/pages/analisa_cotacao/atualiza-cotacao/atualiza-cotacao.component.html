@@ -1,0 +1,105 @@
+<po-page-default p-title="Registrar cotação" [p-breadcrumb]="breadcrumb">
+    <po-container>
+        <div class="po-row">
+            <div class="po-md-4">
+                <po-input name="input" name="searchParam" [(ngModel)]="searchParam"
+                    (keyup.enter)="onPesquisar(searchParam, true)"> </po-input>
+            </div>
+            <div class="po-md-1 po-mt-1">
+                <po-button p-label="Pesquisar" (p-click)="onPesquisar(searchParam, true)"> </po-button>
+            </div>
+        </div>
+        <div class="po-row">
+            <div class="po-md-12">
+                <po-table [p-auto-collapse]="true" [p-columns]="quotationColumns" [p-hide-columns-manager]="true"
+                    [p-items]="quotations" [p-sort]="true" [p-striped]="true">
+                    <ng-template p-table-row-template let-rowItem let-i="rowIndex">
+                        <po-widget p-title="Itens da cotação {{ rowItem.cotacaoId }}">
+                            <div class="po-row">
+                                <po-select name="status" [ngModel]="shipping" (p-change)="setShipping($event, rowItem)"
+                                    p-label="Tipo de frete" [p-options]="shippingOptions">
+                                </po-select>
+                                <po-input class="po-ml-2" p-label="Valor do frete" [(ngModel)]="shippingValue"
+                                    (p-change)="setShippingValue($event, rowItem)"></po-input>
+                                <div class="po-md-3 po-mt-4">
+                                    <label for="anexoCotacao" class="anexoCotacao po-font-text-bold">
+                                        Escolher Arquivo
+                                    </label>
+                                    <input readonly [(ngModel)]="anexoSelecionado" class="anexoSelecionado po-font-text">
+                                    <input #imageInput1 class="po-button-label" style="display: none;"
+                                        name="anexoCotacao"
+                                        id="anexoCotacao"
+                                        type="file"
+                                        accept="image/*,.pdf,.doc,.docx,.xlsx,.xls"
+                                        (change)="processFile(imageInput1)">
+                                </div>
+                            </div>
+                            <div class="po-row">
+                                <em>CIF fica por conta do remetente.</em><br>
+                            </div>
+                            <div class="po-row">
+                                <em>FOB fica por conta do destinat&aacute;rio.</em>
+                            </div>
+                            <div class="po-row">
+                                <po-table [p-auto-collapse]="true" [p-columns]="itemColumns"
+                                    [p-hide-columns-manager]="true"
+                                    [p-items]="supplierItensFilter(rowItem.itens, rowItem)" [p-sort]="true"
+                                    [p-striped]="true">
+                                    <ng-template p-table-cell-template let-column="column" let-row="row"
+                                        let-i="rowIndex">
+                                        <po-input *ngIf="column.property === 'product'" p-readonly
+                                            [(ngModel)]="row.product"> </po-input>
+                                        <po-input *ngIf="column.property === 'observation'" p-readonly
+                                            [(ngModel)]="row.observation"> </po-input>
+                                        <po-lookup *ngIf="column.property === 'supplierId'" [(ngModel)]="row.supplierId"
+                                            name="lookupSupplier" [p-disabled]="true" p-field-label="socialName"
+                                            p-field-value="id" [p-filter-service]="supplierService">
+                                        </po-lookup>
+                                        <po-input *ngIf="column.property === 'observationSupplier'"
+                                            [(ngModel)]="row.observationSupplier"> </po-input>
+                                        <po-combo *ngIf="column.property === 'paymentTermsId'"
+                                            [ngModel]="row.paymentTermsId" (p-change)="setPaymentTerm($event, row)"
+                                            name="lookupSupplier" p-field-label="id" p-field-value="id"
+                                            [p-filter-service]="cFService">
+                                        </po-combo>
+                                        <po-input *ngIf="column.property === 'unit'" [(ngModel)]="row.unit" p-readonly>
+                                        </po-input>
+                                        <po-input *ngIf="column.property === 'quantity'" [(ngModel)]="row.quantity"
+                                            p-readonly> </po-input>
+                                        <po-input *ngIf="column.property === 'quotationQuantity'"
+                                            [(ngModel)]="row.quotationQuantity"
+                                            (p-change)="setTotal(row.unitValue, row.quotationQuantity, row.valueIPI, row)">
+                                        </po-input>
+                                        <po-datepicker *ngIf="column.property === 'necessityDate'" p-format="dd/MM/yyyy"
+                                            [(ngModel)]="row.necessityDate" p-readonly> </po-datepicker>
+                                        <po-datepicker *ngIf="column.property === 'validDate'" p-format="dd/MM/yyyy"
+                                            [(ngModel)]="row.validDate"> </po-datepicker>
+                                        <po-input *ngIf="column.property === 'deadline'" [(ngModel)]="row.deadline">
+                                        </po-input>
+                                        <po-input *ngIf="column.property === 'unitValue'" [(ngModel)]="row.unitValue"
+                                            (p-change)="setTotal(row.unitValue, row.quotationQuantity, row.valueIPI, row)">
+                                        </po-input>
+                                        <po-input *ngIf="column.property === 'valueICMS'" [(ngModel)]="row.valueICMS"
+                                            (p-change)="setICMSValue($event, row)"> </po-input>
+                                        <po-input *ngIf="column.property === 'valueIPI'" [(ngModel)]="row.valueIPI"
+                                            (p-change)="setTotal(row.unitValue, row.quotationQuantity, row.valueIPI, row)">
+                                        </po-input>
+                                        <po-input *ngIf="column.property === 'totalQuotation'"
+                                            [(ngModel)]="row.totalQuotation" p-readonly> </po-input>
+                                    </ng-template>
+                                </po-table>
+                            </div>
+                            <div class="po-row mt-1">
+                                <po-button p-icon="po-icon po-icon-ok" (p-click)="saveItens(rowItem)" p-label="Salvar">
+                                </po-button>
+                            </div>
+                        </po-widget>
+                    </ng-template>
+                </po-table>
+            </div>
+        </div>
+        <div class="po-row po-mt-2">
+            <po-button-group class="po-md-1" [p-buttons]="pagination"> </po-button-group>
+        </div>
+    </po-container>
+</po-page-default>

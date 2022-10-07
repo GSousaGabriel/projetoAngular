@@ -1,0 +1,17 @@
+<po-page-default>
+    <form [formGroup]="reactiveForm">
+        <div class="po-row">
+            <div class="po-sm-12">
+                <div class="po-row po-offset-3">
+                    <po-input class="po-sm-4" name="user" p-label="Usuário" formControlName="user" p-clean
+                        p-focus="true" p-icon="po-icon-user" p-label="Código do Usuário"
+                        p-help="Digite o código da Usuário">
+                    </po-input>
+                </div>
+                <div class="po-row po-offset-3">
+                    <po-button class="po-sm-2" p-label="Receber nova senha" (p-click)="resetPassword()"></po-button>
+                </div>
+            </div>
+        </div>
+    </form>
+</po-page-default>
